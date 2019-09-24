@@ -1,0 +1,28 @@
+{
+  "name": "ssb-keys-mnemonic",
+  "description": "Module that converts from/to SSB keys and BIP39 mnemonic codes",
+  "version": "0.1.0",
+  "homepage": "https://github.com/staltz/ssb-keys-mnemonic",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/staltz/ssb-keys-mnemonic.git"
+  },
+  "dependencies": {
+    "bip39": "3.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^11.10.4",
+    "ssb-keys": "^7.2.0",
+    "tape": "^4.9.2",
+    "typescript": "3.6.x"
+  },
+  "scripts": {
+    "typescript": "tsc",
+    "tape": "set -e; for t in test/*.js; do node $t; done",
+    "test": "npm run typescript && npm run tape"
+  },
+  "author": "Andre Staltz <contact@staltz.com> (http://staltz.com)",
+  "license": "MIT"
+}
