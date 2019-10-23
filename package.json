@@ -1,7 +1,7 @@
 {
   "name": "ssb-keys-mnemonic",
   "description": "Module that converts from/to SSB keys and BIP39 mnemonic codes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/staltz/ssb-keys-mnemonic",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
