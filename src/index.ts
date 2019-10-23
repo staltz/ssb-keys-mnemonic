@@ -25,7 +25,7 @@ export function keysToWords(keys: Keys): string {
 export function wordsToKeys(words: string): Keys {
   const wordArr = words.trim().split(/\s+/g);
   const amount = wordArr.length;
-  if (amount < 48) throw new Error('there should be 48 words');
+  if (amount !== 48) throw new Error('there should be 48 words');
 
   const words1 = wordArr.slice(0, 24).join(' ');
   const words2 = wordArr.slice(24, 48).join(' ');
