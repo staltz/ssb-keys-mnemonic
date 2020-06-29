@@ -20,6 +20,35 @@ tape('keys => toWords => fromWords => keys', (t) => {
   t.end();
 });
 
+tape('supports old mode with 48 words', (t) => {
+  const words =
+    'body hair useful camp warm into cause riot two bamboo kick educate ' +
+    'dinosaur advice seed type crisp where guilt avocado output rely lunch ' +
+    'goddess stool sausage fatigue repeat duty strike tape public celery ' +
+    'dumb develop extra shed volcano glide test elegant vapor step stick ' +
+    'eternal own miss pottery';
+
+  const keys = Mnemonic.wordsToKeys(words);
+
+  t.equals(keys.curve, 'ed25519', 'keys is ed25519');
+  t.equals(
+    keys.private,
+    'GO0Lv5BvcuuJJdHrokHoo0PmCDC/XjO/SZ6H+ddq4UvWd/VPW1RJrjd1aCUIfPIojFXrWMb8R54vVerU2TwjdQ==.ed25519',
+    'private is correct',
+  );
+  t.equals(
+    keys.public,
+    '1nf1T1tUSa43dWglCHzyKIxV61jG/EeeL1Xq1Nk8I3U=.ed25519',
+    'public is correct',
+  );
+  t.equals(
+    keys.id,
+    '@1nf1T1tUSa43dWglCHzyKIxV61jG/EeeL1Xq1Nk8I3U=.ed25519',
+    'id is correct',
+  );
+  t.end();
+});
+
 tape('handles error cases', (t) => {
   const tooFewWords =
     'whip stage topple design unique anxiety lizard check drive oxygen lazy ' +
