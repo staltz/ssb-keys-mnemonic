@@ -2,7 +2,7 @@ const tape = require('tape');
 const Mnemonic = require('../lib');
 const Keys = require('ssb-keys');
 
-tape('keys => toWords => fromWords => keys', t => {
+tape('keys => toWords => fromWords => keys', (t) => {
   const inputKeys = Keys.generate();
   console.log('inputKeys', inputKeys, '\n');
   const words = Mnemonic.keysToWords(inputKeys);
@@ -20,15 +20,14 @@ tape('keys => toWords => fromWords => keys', t => {
   t.end();
 });
 
-tape('handles error cases', t => {
+tape('handles error cases', (t) => {
   const tooFewWords =
     'whip stage topple design unique anxiety lizard check drive oxygen lazy ' +
-    'nut lesson fatigue clean fee furnace lady paddle forest axis mercy ' +
-    'month dish column champion cram';
+    'nut lesson fatigue clean fee furnace lady paddle forest axis mercy';
 
   t.throws(
     () => Mnemonic.wordsToKeys(tooFewWords),
-    /^Error: there should be 48 words$/,
+    /^Error: there should be 24 words$/,
     'detects too few words',
   );
 
@@ -42,7 +41,7 @@ tape('handles error cases', t => {
 
   t.throws(
     () => Mnemonic.wordsToKeys(tooManyWords),
-    /^Error: there should be 48 words$/,
+    /^Error: there should be 24 words$/,
     'detects too many words',
   );
 
@@ -55,21 +54,8 @@ tape('handles error cases', t => {
 
   t.throws(
     () => Mnemonic.wordsToKeys(firstPartBroken),
-    /^Error: invalid words part 1$/,
-    'detects first part broken',
-  );
-
-  const secondPartBroken =
-    'guitar chunk mosquito caution gravity kitten gown warm want shiver ' +
-    'neutral owner lady mind fish vibrant kiwi melody initial must argue ' +
-    'hover human detail student ordinary erode BAD wish siege put dial rail ' +
-    'liquid picture BAD destroy BAD gasp weird prison have BAD endorse ' +
-    'reward else essay BAD';
-
-  t.throws(
-    () => Mnemonic.wordsToKeys(secondPartBroken),
-    /^Error: invalid words part 2$/,
-    'detects second part broken',
+    /^Error: invalid words$/,
+    'detects first bad input',
   );
 
   t.end();

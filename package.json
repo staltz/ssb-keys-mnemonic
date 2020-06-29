@@ -10,7 +10,8 @@
     "url": "git://github.com/staltz/ssb-keys-mnemonic.git"
   },
   "dependencies": {
-    "bip39": "3.0.2"
+    "bip39": "3.0.2",
+    "chloride": "2.2.14"
   },
   "devDependencies": {
     "@types/node": "^11.10.4",

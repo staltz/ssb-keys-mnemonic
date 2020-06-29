@@ -25,7 +25,7 @@ const words = mnemonic.keysToWords(keys)
 console.log(words)
 /*
 
-'body hair useful camp warm into cause riot two bamboo kick educate dinosaur advice seed type crisp where guilt avocado output rely lunch goddess stool sausage fatigue repeat duty strike tape public celery dumb develop extra shed volcano glide test elegant vapor step stick eternal own miss pottery'
+'body hair useful camp warm into cause riot two bamboo kick educate dinosaur advice seed type crisp where guilt avocado output rely lunch goddess'
 
 */
 ```
@@ -35,7 +35,7 @@ console.log(words)
 ```js
 const mnemonic = require('ssb-keys-mnemonic')
 
-const words = 'body hair useful camp warm into cause riot two bamboo kick educate dinosaur advice seed type crisp where guilt avocado output rely lunch goddess stool sausage fatigue repeat duty strike tape public celery dumb develop extra shed volcano glide test elegant vapor step stick eternal own miss pottery'
+const words = 'body hair useful camp warm into cause riot two bamboo kick educate dinosaur advice seed type crisp where guilt avocado output rely lunch goddess'
 
 const keys = mnemonic.wordsToKeys(words)
 
