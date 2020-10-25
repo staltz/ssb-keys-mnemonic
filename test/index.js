@@ -20,6 +20,55 @@ tape('keys => toWords => fromWords => keys', (t) => {
   t.end();
 });
 
+tape('keysToWords is stable', (t) => {
+  const keys = {
+    curve: 'ed25519',
+    public: '1nf1T1tUSa43dWglCHzyKIxV61jG/EeeL1Xq1Nk8I3U=.ed25519',
+    private:
+      'GO0Lv5BvcuuJJdHrokHoo0PmCDC/XjO/SZ6H+ddq4UvWd/VPW1RJrjd1aCUIfPIojFXrWMb8R54vVerU2TwjdQ==.ed25519',
+    id: '@1nf1T1tUSa43dWglCHzyKIxV61jG/EeeL1Xq1Nk8I3U=.ed25519',
+  };
+
+  const words = Mnemonic.keysToWords(keys);
+
+  t.equals(
+    words,
+    'body hair useful camp warm into cause riot ' +
+      'two bamboo kick educate dinosaur advice seed type ' +
+      'crisp where guilt avocado output rely lunch goddess',
+    'words match',
+  );
+
+  t.end();
+});
+
+tape('wordsToKeys is stable', (t) => {
+  const words =
+    'body hair useful camp warm into cause riot two bamboo kick educate dinosaur advice seed type crisp where guilt avocado output rely lunch goddess';
+
+  const keys = Mnemonic.wordsToKeys(words);
+
+  t.equals(typeof keys, 'object', 'keys is an object');
+  t.equals(keys.curve, 'ed25519', '.curve matches');
+  t.equals(
+    keys.public,
+    '1nf1T1tUSa43dWglCHzyKIxV61jG/EeeL1Xq1Nk8I3U=.ed25519',
+    '.public matches',
+  );
+  t.equals(
+    keys.private,
+    'GO0Lv5BvcuuJJdHrokHoo0PmCDC/XjO/SZ6H+ddq4UvWd/VPW1RJrjd1aCUIfPIojFXrWMb8R54vVerU2TwjdQ==.ed25519',
+    '.private matches',
+  );
+  t.equals(
+    keys.id,
+    '@1nf1T1tUSa43dWglCHzyKIxV61jG/EeeL1Xq1Nk8I3U=.ed25519',
+    '.id matches',
+  );
+
+  t.end();
+});
+
 tape('supports old mode with 48 words', (t) => {
   const words =
     'body hair useful camp warm into cause riot two bamboo kick educate ' +
